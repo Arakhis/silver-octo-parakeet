@@ -38,12 +38,12 @@ def generate_about(heada, bodya, footera):
 	return about
 
 def generate_lists(sp_name, sp_items):
-	lst = "sp_name" + "<ul>"
+	lst = sp_name + "<ul>"
 	f = 0
 	while f < len(sp_items):
 		lst += "<li>" + sp_items[f] + "</li>"
 		f = f + 1
-	return body + "</ul>"
+	return lst + "</ul>"
 
 sp1 = generate_lists("<li>Times</li>", times)
 sp2 = generate_lists("<li>Advices</li>", advices)
@@ -51,10 +51,10 @@ sp3 = generate_lists("<li>Promises</li>", promises)
 
 def generate_genlist(spi1, spi2, spi3):
 	genlist = "<ol>{0}{1}{2}</ol>".format(spi1,spi2,spi3)
-	return "<body>" + genlist + "</body>"
+	return genlist
 
-abody = generate_genlist(sp1, sp2, sp3)
-ahead = "<title>{tit}</title><img src='/zodiac.jpeg' height='100' width='100'>".format(tit='О чем все это?')
+abody = ("<body>" + generate_genlist(sp1, sp2, sp3) + "</body>")
+ahead = "<title>{tit}</title><h1>{tit}</h1><img src='/zodiac.jpeg' height='100' width='100'>".format(tit='О чем все это?')
 afooter = "<a href='/index.html'>Вернуться на главную</a>"
 ap = open("about.html", "w")
 print(generate_about(ahead, abody, afooter), file=ap)
