@@ -34,7 +34,7 @@ print(generate_page(head, body, footer), file=fp)
 fp.close()
 
 def generate_about(heada, bodya, footera):
-	about = heada + bodya + footera
+	about = "<html>{0}{1}{2}</html>".format(heada, bodya, footera)
 	return about
 
 def generate_lists(sp_name, sp_items):
@@ -51,7 +51,7 @@ sp3 = generate_lists("<li>Promises</li>", promises)
 
 def generate_genlist(spi1, spi2, spi3):
 	genlist = "<ol>{0}{1}{2}</ol>".format(spi1,spi2,spi3)
-	return genlist
+	return "<body>" + genlist + "</body>"
 
 abody = generate_genlist(sp1, sp2, sp3)
 ahead = "<title>{tit}</title><img src='/zodiac.jpeg' height='100' width='100'>".format(tit='О чем все это?')
